@@ -2,8 +2,8 @@
 name: daily-pbp-features
 on:
   workflow_dispatch:
-  schedule: 
-    - cron: "0 10 * 1,2,9-12 *"  # hour after nflverse-pbp's schedule
+  # schedule: 
+  #   - cron: "0 10 * 1,2,9-12 *"  # hour after nflverse-pbp's schedule
 jobs:
   run:
     runs-on: ubuntu-latest
