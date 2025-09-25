@@ -14,7 +14,7 @@ latest_date = pd.to_datetime(df["game_date"]).max()
 
 # Try to fetch last artifact to compare
 try:
-    prev = run.use_artifact(f"raw_pbp:{SEASON}:latest")
+    prev = run.use_artifact(f"raw_pbp-{SEASON}:latest")
     prev_meta = prev.metadata
     prev_date = pd.to_datetime(prev_meta.get("latest_date"))
 except Exception:
