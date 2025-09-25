@@ -2,16 +2,20 @@
 name: daily-pbp-features
 on:
   workflow_dispatch:
-  schedule: [{ cron: "0 10 * 1,2,9-12 *" }]  # hour after nflverse-pbp's schedule
+  schedule: 
+    - cron: "0 10 * 1,2,9-12 *"  # hour after nflverse-pbp's schedule
 jobs:
   run:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v5
-      with: { python-version: "3.11" }
+      with:
+        python-version: "3.11"
     - run: pip install -r requirements.txt
     - run: python jobs/ingest_pbp.py
-      env: { WANDB_API_KEY: ${{ secrets.WANDB_API_KEY }} }
+      env: 
+        WANDB_API_KEY: ${{ secrets.WANDB_API_KEY }}
     - run: python jobs/fe_build.py
-      env: { WANDB_API_KEY: ${{ secrets.WANDB_API_KEY }} }
+      env: 
+        WANDB_API_KEY: ${{ secrets.WANDB_API_KEY }}
