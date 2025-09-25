@@ -27,7 +27,7 @@ pbp = pd.read_parquet(f"{raw}/pbp.parquet")
 
 feat_team_week = ol_dl_indices(pbp).dropna()
 
-art = wandb.Artifact(f"feat_offense_team_week:{SEASON}", type="feature_table",
+art = wandb.Artifact(f"feat_offense_team_week-{SEASON}", type="feature_table",
                      metadata={"keys":["team_id","season","week"], "rows": len(feat_team_week)})
 feat_team_week.to_parquet("feat_offense_team_week.parquet", index=False)
 art.add_file("feat_offense_team_week.parquet")
